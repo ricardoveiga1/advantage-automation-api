@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://example.com/example.json",
+  "type": "object",
+  "required": [
+    "userId",
+    "productsInCart"
+  ],
+  "properties": {
+    "userId": {
+      "id": "#/properties/userId",
+      "type": "integer"
+    },
+    "productsInCart": {
+      "id": "#/properties/productsInCart",
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "id": "#/properties/productsInCart/items",
+        "anyOf": [
+          {
+            "id": "#/properties/productsInCart/items/anyOf/0",
+            "type": "object",
+            "required": [
+              "productId",
+              "productName",
+              "price",
+              "quantity",
+              "imageUrl",
+              "color",
+              "exists",
+              "hasWarranty"
+            ],
+            "properties": {
+              "productId": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/productId",
+                "type": "integer"
+              },
+              "productName": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/productName",
+                "type": "string"
+              },
+              "price": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/price",
+                "type": "number"
+              },
+              "quantity": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/quantity",
+                "type": "integer"
+              },
+              "imageUrl": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/imageUrl",
+                "type": "string"
+              },
+              "color": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/color",
+                "type": "object",
+                "required": [
+                  "code",
+                  "name",
+                  "inStock"
+                ],
+                "properties": {
+                  "code": {
+                    "id": "#/properties/productsInCart/items/anyOf/0/properties/color/properties/code",
+                    "type": "string"
+                  },
+                  "name": {
+                    "id": "#/properties/productsInCart/items/anyOf/0/properties/color/properties/name",
+                    "type": "string"
+                  },
+                  "inStock": {
+                    "id": "#/properties/productsInCart/items/anyOf/0/properties/color/properties/inStock",
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "exists": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/exists",
+                "type": "boolean"
+              },
+              "hasWarranty": {
+                "id": "#/properties/productsInCart/items/anyOf/0/properties/hasWarranty",
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

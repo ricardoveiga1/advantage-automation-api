@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://example.com/example.json",
+  "type": "object",
+  "required": [
+    "response"
+  ],
+  "properties": {
+    "response": {
+      "id": "#/properties/response",
+      "type": "object",
+      "required": [
+        "success",
+        "userId",
+        "reason"
+      ],
+      "properties": {
+        "success": {
+          "id": "#/properties/response/properties/success",
+          "type": "boolean"
+        },
+        "userId": {
+          "id": "#/properties/response/properties/userId",
+          "type": "integer"
+        },
+        "reason": {
+          "id": "#/properties/response/properties/reason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
