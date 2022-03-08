@@ -18,18 +18,6 @@ public class LoginApi{
 
     private static final String LOGIN_USER_ENDPOINT = "/login";
 
-
-    public Login loginUserOrder(Login login) {
-        return given().
-                body(login).
-                when().
-                post(LOGIN_USER_ENDPOINT).
-                then().
-                statusCode(HttpStatus.SC_OK).
-                extract().body().as(Login.class)
-        ;
-    }
-
     public Response loginUser(Login login) {
 
         return given().
@@ -40,48 +28,4 @@ public class LoginApi{
     }
 
 
-    public String getToken(Login login){
-        return given().
-                when().
-                body(login).
-                when().
-                post(LOGIN_USER_ENDPOINT).
-                then().
-                extract().
-                path("statusMessage.token")
-        ;
-    }
-
-    public int getUserId(Login login){
-        return given().
-                body(login).
-                when().
-                post(LOGIN_USER_ENDPOINT).
-                thenReturn().
-                path("statusMessage.userId")
-        ;
-    }
-
-    public Login getLoginOrder(Login login) {
-        return given().
-                body(login).
-                when().
-                post(LOGIN_USER_ENDPOINT).
-                then().log().all().
-                extract().jsonPath().get("response")
-        ;
-    }
-
-    public void getLoginOrderResponse(Login login) {
-        Response response =
-                given().
-                    body(login).
-                    when().
-                    post(LOGIN_USER_ENDPOINT).
-                    then().log().all().
-                    extract().jsonPath().get("response")
-        ;
-        int getId = response.jsonPath().getInt("response.userId");
-        String token = response.jsonPath().getString("response.token");
-    }
 }

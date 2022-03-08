@@ -20,8 +20,6 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 public class UserApi{
 
     private static final String CREATE_USER_ENDPOINT = "/register";
-//    private static final String LOGIN_USER_ENDPOINT = "/login";
-//    private static final String LOGOUT_USER_ENDPOINT = "/logout";
 
     public User createUser(User user) {
         return given().
@@ -43,16 +41,6 @@ public class UserApi{
                 body(user).
                 when().
                 post(CREATE_USER_ENDPOINT)
-        ;
-    }
-
-    public int createUserOrder(User user) {
-        return given().
-                body(user).
-                when().
-                post(CREATE_USER_ENDPOINT).
-                then().
-                extract().jsonPath().get("response")
         ;
     }
 }
